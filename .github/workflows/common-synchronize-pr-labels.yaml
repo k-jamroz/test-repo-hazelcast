@@ -10,17 +10,13 @@ on:
          - unlabeled
 
 jobs:
-   test:
-      runs-on: ubuntu-18.04
-      steps:
-        - name: Show environment v2
-          run: env | grep ^GITHUB
-        - name: Show ref v2
-          run: echo "===============> Version from $GITHUB_REF"
-
    synchronize-pr-labels:
       runs-on: ubuntu-latest
       steps:
+         - name: Show environment v2
+           run: env | grep ^GITHUB
+         - name: Show ref v2
+           run: echo "===============> Version from $GITHUB_REF"
          - uses: actions/checkout@v4
          - name: Copy labels to other PR
            run: |
