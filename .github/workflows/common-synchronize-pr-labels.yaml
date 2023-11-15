@@ -13,16 +13,14 @@ jobs:
    synchronize-pr-labels:
       runs-on: ubuntu-latest
       steps:
-         - name: Show environment v2
-           run: env | grep ^GITHUB
-         - name: Show ref v2
-           run: echo "===============> Version from $GITHUB_REF"
          - uses: actions/checkout@v4
          - name: Copy labels to other PR
            run: |
               SOURCE_REPO="${{ github.repository }}"
               SOURCE_PR="${{ github.event.pull_request.number }}"
               CONTENT="$(gh pr view "$SOURCE_PR" --json "body,comments" -q '.body, .comments[].body')"
+              echo "===============> Version from $GITHUB_REF"
+              env | grep ^GITHUB
               
               while read -r line; do
                 if [[ $line =~ Closes\ ([^/]+/[^/]+)#([0-9]+) ]]; then
