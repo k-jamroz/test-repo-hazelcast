@@ -16,13 +16,13 @@ ee_config = {
 
 os_config = {
     "PR_TRANSFORMATIONS" : [
-            core.move("", "hazelcast", paths = glob(["**"])),
+            core.move("", "hazelcast2", paths = glob(["**"])),
             core.move("hazelcast/.github", ".github", paths = glob([
                 "workflows/common-*",
             ])),
     ],
     "PUSH_INCLUDE" : [
-         "hazelcast/**",
+         "hazelcast2/**",
          ".github/workflows/common-*",
      ],
     "PUSH_EXCLUDE" : [],
